@@ -1,5 +1,6 @@
 package com.jeff.sbtstudy.variance
 
+
 /**
  * Created by winniewang on 4/3/15.
  */
@@ -11,7 +12,6 @@ object StackTest extends App {
 
   println
 
-  var s1: Stack1[String] = new Stack1().push(7)
-  //s1 = s1.push(new Object())
-  println(s1)
+  val cvt = new ContraVarianceType[Object]
+  println("cvt is instance of ContraVarianceType[Any]? " + cvt.asInstanceOf[ContraVarianceType[Int]])
 }
