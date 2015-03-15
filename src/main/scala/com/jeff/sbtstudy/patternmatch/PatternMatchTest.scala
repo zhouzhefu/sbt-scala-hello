@@ -37,12 +37,24 @@ object PatternMatchTest extends App {
   println(matchTest2(100))
 
   /**
-   * Pattern Matching with Extractor
+   * Pattern Matching with Extractor.
+   *
+   * You don't need a Case Class, to allow a value to 'match' anything, as long as it implements 'unapply()'.
+   * Maybe, it reflects the fundamental mechanism of the matching of Case Class or anything primitively supported.
    */
-  val x = ExtractorObject(4) //note the apply(...) method is used as Constructor, but it is not necessary for an extractor
+  //note the apply(...) method is used as Constructor, but it is not necessary for an extractor
+  val x = ExtractorObject(3/*try '3', '4', '5' for different interpretation*/)
+  println(x + " as " + x.getClass.getCanonicalName) //4*4 = 16, the result of apply(4)
   x match {
-    case ExtractorObject(num) => println(x + " is bigger two times than " + num)
+    case ExtractorObject(num) /* 'num = ExtractorObject.unapply(x)' called here */ => println(x + " is bigger two times than " + num)
+    case ExtractorObject2(tuple) => println("Get a nice tuple: " + tuple)
+    case 25 => println("I am just 25")
     case _ => println("i cannot calculate. ")
   }
 
+
+  /**
+   * Match a Seq(Char)
+   */
+  RegExpScala.containScala("scala is awesome!")
 }
