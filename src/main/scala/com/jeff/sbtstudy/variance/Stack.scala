@@ -8,10 +8,10 @@ class Stack[+A] {
   def push[B >: A](elem: B): Stack[B] = new Stack[B] {
     override def top: B = elem
     override def pop: Stack[B] = Stack.this
-    override def toString() = elem.toString + " " + Stack.this.toString
+    override def toString() = elem.toString + " inside " + Stack.this.toString
   }
 
   def top: A = sys.error("no element on stack")
   def pop: Stack[A] = sys.error("no element on stack")
-  override def toString() = ""
+  override def toString() = "parent"
 }

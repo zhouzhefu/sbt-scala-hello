@@ -1,13 +1,27 @@
 package com.jeff.sbtstudy.variance
 
+import java.lang.reflect.ParameterizedType
+import java.lang.reflect.Type
+
+
 
 /**
  * Created by winniewang on 4/3/15.
  */
 object StackTest extends App {
-  //for Stack.push[B >: A](), A is B's super type
+  def getArrayString[T <: Any](a: Array[T]): String = {
+    var s = ""
+    a.foreach((aa) => {s = s + aa + ","})
+    s
+  }
+
+  //for Stack.push[B >: A](), B is A's super type
   var s: Stack[Any] = new Stack().push("hello")
-  s = s.push(new Object()).push(7)
+  println(s)
+
+  s = s.push(new Object())
+  println(s)
+  s = s.push(7)
   println(s)
 
   println
