@@ -8,7 +8,7 @@ class Stack[+A] {
   def push[B >: A](elem: B): Stack[B] = new Stack[B] {
     override def top: B = elem
     override def pop: Stack[B] = Stack.this
-    override def toString() = elem.toString + " inside " + Stack.this.toString
+    override def toString() = elem + " inside " + Stack.this.toString
   }
 
   def top: A = sys.error("no element on stack")
